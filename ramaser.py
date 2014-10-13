@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
 	dico={}
 	french=open('liste_francais.txt','r')
-	for mot in f.readlines()
+	for mot in french.readlines():
 		dico.update(parsing(mot))
 
 	with open('dico.json', 'w') as f:
