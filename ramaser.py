@@ -4,6 +4,7 @@
 import requests
 import bs4 as bs
 import json
+from redis import Redis
 
 DICO_CREOLE = "dico.json" 
 
@@ -12,7 +13,7 @@ def updateredis():
 	dico = json.loads(f.read())
 	redis_conn = Redis("localhost")
 	for kreol in dico:
-		redis_conn.set("kreol:%s:%s" % kreol,dico[kreol])
+		redis_conn.hset("reyone",kreol,dico[kreol])
 
 def parsing(mot_french="manger"):
 	payload = {'mot2': mot_french}
